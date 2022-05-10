@@ -5,11 +5,12 @@ from tkinter import Button, Toplevel, messagebox
 from PIL import Image, ImageTk
 import os
 import shutil
+from attr import define
 # NOTE: math and graph library
 from sympy import polys
 from numpy import array
 from control.matlab import tf, pole, zero, bode
-from matplotlib.pyplot import savefig, show
+from matplotlib.pyplot import close, savefig, show
 # NOTE: write by my self
 from DeBug import kyDebugTk
 from KY_Entry import kyEntry
@@ -202,6 +203,7 @@ def run_bode_ploter() -> None:
 
         # make path
         absPath = os.path.abspath(os.path.curdir)
+        global folderPath
         folderPath = os.path.join(absPath, 'tmp')
 
         # make folder
@@ -239,7 +241,34 @@ def run_bode_ploter() -> None:
         global bodePolterFilePath
         bodePolterFilePath = os.path.join(folderPath, 'bode.png')
         savefig(bodePolterFilePath)
+        close()
 
         set_haveRunBodePloter(True)
         # display function
-        display_png(FuncPath=funcFilePath, BodePath=bodePolterFilePath)
+        display_png(FuncPath=funcFilePath,
+                    BodePath=bodePolterFilePath)
+
+
+def clear_buffer() -> None:  # clear tmp
+    kyDebugTk.outMsg('clear tmp')
+
+    try:
+        os.remove(funcFilePath)
+        kyDebugTk.outMsg('remove func')
+
+    except NameError:
+        kyDebugTk.outMsg('not build func')
+
+    try:
+        os.remove(bodePolterFilePath)
+        kyDebugTk.outMsg('remove bode')
+
+    except NameError:
+        kyDebugTk.outMsg('not build bode')
+
+    try:
+        os.rmdir(folderPath)
+        kyDebugTk.outMsg('remove bode')
+
+    except NameError:
+        kyDebugTk.outMsg('not build folder')

@@ -15,6 +15,7 @@ def main() -> None:
 
     GUI.init(window=window)
     window.mainloop()
+    GUI.clear_buffer()
 
 
 if __name__ == '__main__':

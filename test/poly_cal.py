@@ -11,6 +11,8 @@ newPath = os.path.join(os.path.abspath(os.path.curdir), 'tmp')
 os.mkdir(newPath)
 print(newPath)'''
 
+print(os.path.exists(''))
+
 my_poly = '10'  # "2*x**2+7*x-3"
 x = sympy.Symbol('x')
 try:
