@@ -218,10 +218,11 @@ def run_bode_ploter() -> None:
         num, den = array(upperPolyCoffsList), array(lowerPolyCoffsList)
 
         global transFuncG  # for display
+
         try:
             transFuncG = tf(num, den)
         except Exception as e:
-            kyDebugTk.outMsg(e)
+            kyDebugTk.outMsg(e)  # DEBUG:
             messagebox.showerror(title='error',
                                  message=e)
             return
