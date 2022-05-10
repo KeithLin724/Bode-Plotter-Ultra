@@ -8,10 +8,10 @@ def init(window: Tk) -> None:
     userFrame = Frame(window)
 
     global upperPloyEntry
-    upperPloyEntry = kyEntry(frame=userFrame, entryName='輸入分子多項式係數 : ')
+    upperPloyEntry = kyEntry(frame=userFrame, entryName='輸入分子多項式 : ')
 
     global lowerPloyEntry
-    lowerPloyEntry = kyEntry(frame=userFrame, entryName='輸入分母多項式係數 : ')
+    lowerPloyEntry = kyEntry(frame=userFrame, entryName='輸入分母多項式 : ')
 
     global runBodePloterButton
     runBodePloterButton = Button(userFrame,
