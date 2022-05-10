@@ -28,5 +28,5 @@ class kyDebugTk:
     def outputDebug(self) -> None:
         print(self.__outputFormatStr())
 
-    def outMsg(msg):
+    def outMsg(msg) -> None:
         print(f'---\ndebug msg: {msg}\n---')

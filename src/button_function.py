@@ -118,7 +118,7 @@ def clear() -> None:  # clear
     set_haveRunBodePloter(False)
 
 
-def display_png(FuncPath: str, BodePath: str):
+def display_png(FuncPath: str, BodePath: str) -> None:
     # function display
     funcPhoto = Image.open(FuncPath)
     funcPhotoConverted = ImageTk.PhotoImage(funcPhoto)
