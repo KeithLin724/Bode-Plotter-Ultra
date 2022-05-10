@@ -82,6 +82,9 @@ def topLevel_com() -> None:
     with open(os.path.join(saveFilePath, 'bodeText.txt'), mode='w') as f:
         f.write(str(transFuncG))
 
+    messagebox.showinfo(title='save file path',
+                        message='Success\nSave in ' + saveFilePath)
+
     fileWindow.destroy()
 
 
