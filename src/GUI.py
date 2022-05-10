@@ -32,6 +32,10 @@ def init(window: Tk) -> None:
     # output bodeplot
     outputFrame = Frame(window)
 
+    bodeLabel = Label(outputFrame, text='Bode & Phase Plot',
+                      width=20,
+                      font=('Arial', 16)).pack()
+
     global bodePlotFuncOutputImageLabel
     bodePlotFuncOutputImageLabel = Label(outputFrame)
     bodePlotFuncOutputImageLabel.pack()

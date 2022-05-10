@@ -23,7 +23,8 @@ def div_str_latex(a: str, b: str) -> str:
 def latex_div(lat: str, path: str) -> None:
     plt.clf()
     # add text
-    plt.text(0.3, 0.6, r"$%s$" % lat, fontsize=20)
+    plt.text(0.5, 0.5, r"$%s$" % lat,
+             fontsize=20, ha='center', va='center')
     # hide axes
     fig = plt.gca()
     fig.axes.get_xaxis().set_visible(False)
