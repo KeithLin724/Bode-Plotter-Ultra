@@ -13,3 +13,5 @@ https://kitchingroup.cheme.cmu.edu/blog/2013/01/22/Polynomials-in-python/?msclki
 https://stackoverflow.com/questions/59109975/how-would-i-parse-a-polynomial?msclkid=bcecfcf2cf9111ec8eec600bc6ba35d4
 
 https://stackoverflow.com/questions/3482081/how-to-update-the-image-of-a-tkinter-label-widget
+
+https://stackoverflow.com/questions/34087382/matplotlib-center-text-in-its-bbox
