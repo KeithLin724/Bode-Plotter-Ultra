@@ -21,9 +21,6 @@ def main() -> None:
     window.tk.call('tk', 'scaling', ScaleFactor/75)
 
     styleTheme = sl(theme='superhero')
-    # styleTheme.theme('cosmo')
-    #styleTheme = Style(theme='cosmo')
-    #window = styleTheme.master
 
     window.title('Bode Ploter Ultra(design By KYLiN)')
 
