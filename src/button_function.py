@@ -5,9 +5,9 @@ from tkinter import messagebox
 from ttkbootstrap import *
 from ttkbootstrap.constants import *
 from PIL import Image, ImageTk
+#NOTE: file
 import os
 import shutil
-from attr import define
 # NOTE: math and graph library
 from sympy import polys
 from numpy import array
