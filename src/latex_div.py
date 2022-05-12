@@ -20,7 +20,7 @@ def div_str_latex(a: str, b: str) -> str:
     return '\\frac{' + a + '}' + '{'+b+'}'
 
 
-def latex_div(lat: str, path: str) -> None:
+def latex_div(lat: str, path: str, dpi) -> None:
     plt.clf()
     # add text
     plt.text(0.5, 0.5, r"$%s$" % lat,
@@ -30,15 +30,15 @@ def latex_div(lat: str, path: str) -> None:
     fig.axes.get_xaxis().set_visible(False)
     fig.axes.get_yaxis().set_visible(False)
 
-    plt.savefig(path)
+    plt.savefig(path, dpi=dpi)
     plt.clf()
     plt.close()
 
 
-def to_latex_div_png(upperPolyList: list[int], lowerPolyList: list[int], path: str) -> None:
+def to_latex_div_png(upperPolyList: list[int], lowerPolyList: list[int], path: str, dpi=100) -> None:
     upperPolyStr, lowerPolyStr = to_math_equ(
         math_coff=upperPolyList), to_math_equ(math_coff=lowerPolyList)
 
     outLatex = div_str_latex(a=upperPolyStr,
                              b=lowerPolyStr).replace('x', 's').replace('1.0*', '')
-    latex_div(lat=outLatex, path=path)
+    latex_div(lat=outLatex, path=path, dpi=dpi)

@@ -15,3 +15,7 @@ https://stackoverflow.com/questions/59109975/how-would-i-parse-a-polynomial?mscl
 https://stackoverflow.com/questions/3482081/how-to-update-the-image-of-a-tkinter-label-widget
 
 https://stackoverflow.com/questions/34087382/matplotlib-center-text-in-its-bbox
+
+https://blog.csdn.net/qq_25921925/article/details/103987572
+
+https://blog.csdn.net/aqqwvfbukn/article/details/121399647

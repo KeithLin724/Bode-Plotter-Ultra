@@ -16,9 +16,13 @@ from DeBug import kyDebugTk
 from KY_Entry import kyEntry
 import latex_div as ld
 import GUI
+from window_upgrade import get_ppi
 
 global haveRunBodePloter
 haveRunBodePloter = False
+
+global window_dpi
+window_dpi = get_ppi()
 
 
 def set_haveRunBodePloter(TF: bool) -> None:
@@ -218,7 +222,8 @@ def run_bode_ploter() -> None:
         # save function photo
         ld.to_latex_div_png(upperPolyList=upperPolyCoffsList,
                             lowerPolyList=lowerPolyCoffsList,
-                            path=funcFilePath)
+                            path=funcFilePath,
+                            dpi=window_dpi)
 
         num, den = array(upperPolyCoffsList), array(lowerPolyCoffsList)
 
@@ -240,7 +245,7 @@ def run_bode_ploter() -> None:
 
         global bodePolterFilePath
         bodePolterFilePath = os.path.join(folderPath, 'bode.png')
-        savefig(bodePolterFilePath)
+        savefig(bodePolterFilePath, dpi=window_dpi)
         close()
 
         set_haveRunBodePloter(True)
