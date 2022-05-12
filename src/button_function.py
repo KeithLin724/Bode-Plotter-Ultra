@@ -62,9 +62,22 @@ def topLevel_com() -> None:
 
     # new save file path
     saveFilePath = os.path.join(userChooseDir, folderName)
-    os.mkdir(saveFilePath)
+    if os.path.exists(saveFilePath) == True:
+        kyDebugTk.outMsg('same path')
+        coverChoose = messagebox.askquestion(title='cover file',
+                                             message=f'''
+                                             There have same folder.
+                                             Do you want to cover it ?
+                                             Path: {saveFilePath}
+                                             ''')
+        if coverChoose == 'no':
+            inputFolderNameEntry.clear_entry()
+            return
 
-    kyDebugTk.outMsg(saveFilePath + 'exists:' +  # DEBUG:
+    else:
+        os.mkdir(saveFilePath)
+
+    kyDebugTk.outMsg(saveFilePath + ' exists:' +  # DEBUG:
                      str(os.path.exists(saveFilePath)))
 
     # copy file
