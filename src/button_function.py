@@ -1,7 +1,9 @@
 # button function
 #NOTE: GUI
 from tkinter.filedialog import askdirectory
-from tkinter import Button, Toplevel, messagebox
+from tkinter import messagebox
+from ttkbootstrap import *
+from ttkbootstrap.constants import *
 from PIL import Image, ImageTk
 import os
 import shutil
@@ -118,7 +120,7 @@ def save_file() -> None:  # ask the file name  # save file
         enterSaveButton = Button(fileWindow,
                                  text='save',
                                  command=topLevel_com,
-                                 width=8, height=1).pack()
+                                 width=8).pack()
         return
 
     else:

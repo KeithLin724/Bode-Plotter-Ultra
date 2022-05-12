@@ -4,8 +4,9 @@ written: KYLiN
 This is a code of Entry ,easy to use 
 Date: 05/07/22
 '''
-
-from tkinter import Frame, Label, Entry, LEFT, END
+from ttkbootstrap import *
+from ttkbootstrap.constants import LEFT, END
+#from tkinter import LEFT, END
 
 
 class kyEntry:
@@ -15,8 +16,7 @@ class kyEntry:
         # label for display
         self.__label = Label(self.__Frame,
                              text=entryName,
-                             width=20,
-                             font=('Arial', 12)).pack(side=LEFT)
+                             width=20).pack(side=LEFT)
         # entry
         self.__entry = Entry(self.__Frame)
         self.__entry.pack(side=LEFT)

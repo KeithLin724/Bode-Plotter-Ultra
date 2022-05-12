@@ -1,11 +1,16 @@
-from tkinter import *
+from ttkbootstrap import *
 from KY_Entry import kyEntry
 from button_function import *
 
 
-def init(window: Tk) -> None:
+def init(window: Window) -> None:
     # User Frame
     userFrame = Frame(window)
+
+    global styleMain
+    styleMain = Style()
+    styleMain.configure('TLabel', font=('Arial', 13))
+    styleMain.configure('TButton', font=('Arial', 13))
 
     global upperPloyEntry
     upperPloyEntry = kyEntry(frame=userFrame, entryName='輸入分子多項式 : ')
@@ -17,11 +22,11 @@ def init(window: Tk) -> None:
     runBodePloterButton = Button(userFrame,
                                  text='run',
                                  command=run_bode_ploter,
-                                 width=8, height=1).pack()
+                                 width=8).pack()
 
-    funcLabel = Label(userFrame, text='Transfor Function',
-                      width=20,
-                      font=('Arial', 16)).pack()
+    funcLabel = Label(userFrame,
+                      text='Transfor Function',
+                      width=20).pack()
 
     global answerFuncOutputImageLabel
     answerFuncOutputImageLabel = Label(userFrame)
@@ -32,9 +37,9 @@ def init(window: Tk) -> None:
     # output bodeplot
     outputFrame = Frame(window)
 
-    bodeLabel = Label(outputFrame, text='Bode & Phase Plot',
-                      width=20,
-                      font=('Arial', 16)).pack()
+    bodeLabel = LabelFrame(outputFrame,
+                           text='Bode & Phase Plot',
+                           width=20).pack()
 
     global bodePlotFuncOutputImageLabel
     bodePlotFuncOutputImageLabel = Label(outputFrame)
@@ -49,18 +54,18 @@ def init(window: Tk) -> None:
     openBodePlotButton = Button(buttonFrame,
                                 text='open',
                                 command=open_bode_plot_detail,
-                                width=8, height=1).pack()
+                                width=8).pack()
 
     global saveFileButton
     saveFileButton = Button(buttonFrame,
                             text='save',
                             command=save_file,
-                            width=8, height=1).pack()
+                            width=8).pack()
 
     global clearButton
     clearButton = Button(buttonFrame,
                          text='clear',
                          command=clear,
-                         width=8, height=1).pack()
+                         width=8).pack()
 
     buttonFrame.pack()

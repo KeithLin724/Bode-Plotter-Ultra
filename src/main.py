@@ -4,23 +4,14 @@ written By KYLiN
 This is Bode ploter ultra , This is a code of build the bode plot , It is a upgrade version of "bode ploter".
 Date: 05/09/22
 '''
-from tkinter import Tk
-
 import GUI
-from ttkbootstrap import Style as sl
-from tkinter.ttk import *
-
-from window_upgrade import window_scaler
+from ttkbootstrap import Window
 
 
 def main() -> None:
 
     global window
-    window = Tk()
-    ScaleFactor = window_scaler()
-    window.tk.call('tk', 'scaling', ScaleFactor/75)
-
-    styleTheme = sl(theme='superhero')
+    window = Window(themename='superhero')
 
     window.title('Bode Ploter Ultra(design By KYLiN)')
 
