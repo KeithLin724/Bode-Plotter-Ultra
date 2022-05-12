@@ -11,26 +11,35 @@ def init(window: Window) -> None:
     styleMain = Style()
     styleMain.configure('TLabel', font=('Arial', 13))
     styleMain.configure('TButton', font=('Arial', 13))
+    styleMain.configure('TLabelFrame', font=('Arial', 24))
+
+    inputLabelFrame = LabelFrame(userFrame,
+                                 text='Input',
+                                 bootstyle='warning')
 
     global upperPloyEntry
-    upperPloyEntry = kyEntry(frame=userFrame, entryName='輸入分子多項式 : ')
+    upperPloyEntry = kyEntry(frame=inputLabelFrame, entryName='輸入分子多項式 : ')
 
     global lowerPloyEntry
-    lowerPloyEntry = kyEntry(frame=userFrame, entryName='輸入分母多項式 : ')
+    lowerPloyEntry = kyEntry(frame=inputLabelFrame, entryName='輸入分母多項式 : ')
 
     global runBodePloterButton
-    runBodePloterButton = Button(userFrame,
+    runBodePloterButton = Button(inputLabelFrame,
                                  text='run',
+                                 bootstyle="success",
                                  command=run_bode_ploter,
                                  width=8).pack()
+    inputLabelFrame.pack()
 
-    funcLabel = Label(userFrame,
-                      text='Transfor Function',
-                      width=20).pack()
+    funcLabel = LabelFrame(userFrame,
+                           text='Transfor Function',
+                           bootstyle='info',
+                           width=20)
 
     global answerFuncOutputImageLabel
-    answerFuncOutputImageLabel = Label(userFrame)
+    answerFuncOutputImageLabel = Label(funcLabel)
     answerFuncOutputImageLabel.pack()
+    funcLabel.pack()
 
     userFrame.pack(side=LEFT)
 
@@ -39,16 +48,20 @@ def init(window: Window) -> None:
 
     bodeLabel = LabelFrame(outputFrame,
                            text='Bode & Phase Plot',
-                           width=20).pack()
+                           bootstyle='info',
+                           width=20)
 
     global bodePlotFuncOutputImageLabel
-    bodePlotFuncOutputImageLabel = Label(outputFrame)
+    bodePlotFuncOutputImageLabel = Label(bodeLabel)
     bodePlotFuncOutputImageLabel.pack()
+    bodeLabel.pack()
 
     outputFrame.pack(side=RIGHT)
 
     # button frame (base on output Frame)
-    buttonFrame = Frame(outputFrame)
+    buttonFrame = LabelFrame(outputFrame,
+                             text='Function',
+                             bootstyle='warning')
 
     global openBodePlotButton
     openBodePlotButton = Button(buttonFrame,

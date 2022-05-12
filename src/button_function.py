@@ -112,7 +112,8 @@ def save_file() -> None:  # ask the file name  # save file
     kyDebugTk.outMsg('Save file')
     if haveRunBodePloter == True:
         global fileWindow
-        fileWindow = Toplevel()
+        fileWindow = Toplevel(title='save file')
+
         global inputFolderNameEntry
         inputFolderNameEntry = kyEntry(frame=fileWindow,
                                        entryName='Input folder name:')
