@@ -4,10 +4,10 @@
 block_cipher = None
 
 
-a = Analysis(['src\\main.py'],
+a = Analysis(['D:/Code/Visual Code/Python/Mini project/Bode ploter Ultra/src/main.py'],
              pathex=[],
              binaries=[],
-             datas=[],
+             datas=[('D:/Code/Visual Code/Python/Mini project/Bode ploter Ultra/icon/icon_92E_icon.ico', '.')],
              hiddenimports=[],
              hookspath=[],
              hooksconfig={},
@@ -21,20 +21,24 @@ pyz = PYZ(a.pure, a.zipped_data,
              cipher=block_cipher)
 
 exe = EXE(pyz,
-          a.scripts,
-          a.binaries,
-          a.zipfiles,
-          a.datas,  
+          a.scripts, 
           [],
+          exclude_binaries=True,
           name='main',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
           upx=True,
-          upx_exclude=[],
-          runtime_tmpdir=None,
           console=False,
           disable_windowed_traceback=False,
           target_arch=None,
           codesign_identity=None,
-          entitlements_file=None , icon='icon\\icon_92E_icon.ico')
+          entitlements_file=None , icon='D:\\Code\\Visual Code\\Python\\Mini project\\Bode ploter Ultra\\icon\\icon_92E_icon.ico')
+coll = COLLECT(exe,
+               a.binaries,
+               a.zipfiles,
+               a.datas, 
+               strip=False,
+               upx=True,
+               upx_exclude=[],
+               name='main')

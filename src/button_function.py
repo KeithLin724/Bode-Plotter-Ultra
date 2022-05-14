@@ -26,6 +26,14 @@ haveRunBodePloter = False
 global window_dpi
 window_dpi = get_ppi()
 
+global saveClick
+saveClick = False
+
+
+def set_saveClick(TF: bool) -> None:
+    global saveClick
+    saveClick = TF
+
 
 def set_haveRunBodePloter(TF: bool) -> None:
     global haveRunBodePloter
@@ -50,30 +58,48 @@ def topLevel_com() -> None:
     if folderName == '':  # folder name error
         messagebox.showerror(title='error',
                              message='invalid name')
+
         fileWindow.destroy()
+        set_saveClick(TF=False)
         return
 
     kyDebugTk.outMsg(folderName)
 
     userChooseDir = askdirectory()  # choose directory path
-    if userChooseDir is None:
+    if userChooseDir == '':
         messagebox.showerror(title='error',
                              message='Didn\'t choose the folder')
+
         fileWindow.destroy()
+        set_saveClick(TF=False)
         return
 
     # new save file path
     saveFilePath = os.path.join(userChooseDir, folderName)
+
+    okcancelChoose = messagebox.askokcancel(title='save path',
+                                            message=f'''
+                                    Is it correct 
+                                    Path: {saveFilePath}
+                                    ''')
+    if okcancelChoose == False:
+        kyDebugTk.outMsg('cancel save file')
+
+        fileWindow.destroy()
+        set_saveClick(TF=False)
+        return
+
     if os.path.exists(saveFilePath) == True:
         kyDebugTk.outMsg('same path')
         coverChoose = messagebox.askquestion(title='cover file',
                                              message=f'''
-                                             There have same folder.
-                                             Do you want to cover it ?
-                                             Path: {saveFilePath}
-                                             ''')
+                                                    There have same folder.
+                                                    Do you want to cover it ?
+                                                    Path: {saveFilePath}
+                                                    ''')
         if coverChoose == 'no':
             inputFolderNameEntry.clear_entry()
+            fileWindow.focus_force()
             return
 
     else:
@@ -106,22 +132,29 @@ def topLevel_com() -> None:
                         message='Success\nSave in ' + saveFilePath)
 
     fileWindow.destroy()
+    set_saveClick(TF=False)
 
 
 def save_file() -> None:  # ask the file name  # save file
-    kyDebugTk.outMsg('Save file')
+    kyDebugTk.outMsg('go to Save file')  # DEBUG:
     if haveRunBodePloter == True:
-        global fileWindow
-        fileWindow = Toplevel(title='save file')
 
-        global inputFolderNameEntry
-        inputFolderNameEntry = kyEntry(frame=fileWindow,
-                                       entryName='Input folder name:')
+        if saveClick == False:  # is not build it
+            kyDebugTk.outMsg('Save file')  # DEBUG:
+            set_saveClick(TF=True)
 
-        enterSaveButton = Button(fileWindow,
-                                 text='save',
-                                 command=topLevel_com,
-                                 width=8).pack()
+            global fileWindow
+            fileWindow = Toplevel(title='save file')
+
+            global inputFolderNameEntry
+            inputFolderNameEntry = kyEntry(frame=fileWindow,
+                                           entryName='Input folder name:')
+
+            enterSaveButton = Button(fileWindow,
+                                     text='save',
+                                     command=topLevel_com,
+                                     width=8).pack()
+
         return
 
     else:
@@ -275,21 +308,21 @@ def clear_buffer() -> None:  # clear tmp
 
     try:
         os.remove(funcFilePath)
-        kyDebugTk.outMsg('remove func')
+        kyDebugTk.outMsg('remove func')  # DEBUG:
 
     except NameError:
-        kyDebugTk.outMsg('not build func')
+        kyDebugTk.outMsg('not build func')  # DEBUG:
 
     try:
         os.remove(bodePolterFilePath)
-        kyDebugTk.outMsg('remove bode')
+        kyDebugTk.outMsg('remove bode')  # DEBUG:
 
     except NameError:
-        kyDebugTk.outMsg('not build bode')
+        kyDebugTk.outMsg('not build bode')  # DEBUG:
 
     try:
         os.rmdir(folderPath)
-        kyDebugTk.outMsg('remove bode')
+        kyDebugTk.outMsg('remove bode')  # DEBUG:
 
     except NameError:
-        kyDebugTk.outMsg('not build folder')
+        kyDebugTk.outMsg('not build folder')  # DEBUG:
