@@ -13,6 +13,9 @@ def main() -> None:
     global window
     window = Window(themename='superhero')
 
+    window.iconbitmap(default='icon\icon_92E_icon.ico')
+    window.iconbitmap('icon\icon_92E_icon.ico')
+
     window.title('Bode Ploter Ultra(design By KYLiN)')
 
     GUI.init(window=window)
