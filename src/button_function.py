@@ -77,12 +77,12 @@ def topLevel_com() -> None:
     # new save file path
     saveFilePath = os.path.join(userChooseDir, folderName)
 
-    okcancelChoose = messagebox.askokcancel(title='save path',
+    okCancelChoose = messagebox.askokcancel(title='save path',
                                             message=f'''
                                     Is it correct 
                                     Path: {saveFilePath}
                                     ''')
-    if okcancelChoose == False:
+    if okCancelChoose == False:
         kyDebugTk.outMsg('cancel save file')
 
         fileWindow.destroy()
