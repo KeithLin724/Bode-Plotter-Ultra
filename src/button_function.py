@@ -40,8 +40,8 @@ def set_haveRunBodePlotter(TF: bool) -> None:
     haveRunBodePlotter = TF
 
 
-def open_bode_plot_detail() -> None:  # open bode ploter more pro
-    kyDebugTk.outMsg(msg='open bode ploter')  # DEBUG:
+def open_bode_plot_detail() -> None:  # open bode plotter more pro
+    kyDebugTk.outMsg(msg='open bode plotter')  # DEBUG:
     if haveRunBodePlotter == True:
         mag, phase, omega = bode(transFuncG)
         show()
