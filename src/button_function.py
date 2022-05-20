@@ -316,6 +316,7 @@ def clear_buffer() -> None:
 
     if os.path.exists(folderPath) == False:
         kyDebugTk.outMsg('not build folder')  # DEBUG:
+        return
 
     try:
         if os.path.exists(funcFilePath):
