@@ -14,7 +14,7 @@ class kyDebugTk:
 
     def __outputFormatStr(self) -> str:
         tmpVal = self.__targetValue()
-        return f'Type: {type(tmpVal)} degbug Value : {tmpVal}'
+        return f'Type: {type(tmpVal)} debug Value : {tmpVal}'
 
     def __func(self) -> None:
         print(self.__outputFormatStr())

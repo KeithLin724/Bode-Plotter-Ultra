@@ -20,8 +20,8 @@ import latex_div as ld
 import GUI
 from window_upgrade import get_ppi
 
-global haveRunBodePloter
-haveRunBodePloter = False
+global haveRunBodePlotter
+haveRunBodePlotter = False
 
 global window_dpi
 window_dpi = get_ppi()
@@ -35,14 +35,14 @@ def set_saveClick(TF: bool) -> None:
     saveClick = TF
 
 
-def set_haveRunBodePloter(TF: bool) -> None:
-    global haveRunBodePloter
-    haveRunBodePloter = TF
+def set_haveRunBodePlotter(TF: bool) -> None:
+    global haveRunBodePlotter
+    haveRunBodePlotter = TF
 
 
 def open_bode_plot_detail() -> None:  # open bode ploter more pro
     kyDebugTk.outMsg(msg='open bode ploter')  # DEBUG:
-    if haveRunBodePloter == True:
+    if haveRunBodePlotter == True:
         mag, phase, omega = bode(transFuncG)
         show()
     else:
@@ -77,12 +77,12 @@ def topLevel_com() -> None:
     # new save file path
     saveFilePath = os.path.join(userChooseDir, folderName)
 
-    okcancelChoose = messagebox.askokcancel(title='save path',
+    okCancelChoose = messagebox.askokcancel(title='save path',
                                             message=f'''
                                     Is it correct 
                                     Path: {saveFilePath}
                                     ''')
-    if okcancelChoose == False:
+    if okCancelChoose == False:
         kyDebugTk.outMsg('cancel save file')
 
         fileWindow.destroy()
@@ -118,7 +118,7 @@ def topLevel_com() -> None:
                              message=e)
 
     try:
-        shutil.copy2(src=bodePolterFilePath,
+        shutil.copy2(src=bodePlotterFilePath,
                      dst=os.path.join(saveFilePath, 'bode.png'))
     except Exception as e:
         kyDebugTk.outMsg(e)  # DEBUG:
@@ -135,9 +135,14 @@ def topLevel_com() -> None:
     set_saveClick(TF=False)
 
 
-def save_file() -> None:  # ask the file name  # save file
+def save_file() -> None:
+    """_summary_
+        ask the file name 
+        save file
+    """
+
     kyDebugTk.outMsg('go to Save file')  # DEBUG:
-    if haveRunBodePloter == True:
+    if haveRunBodePlotter == True:
 
         if saveClick == False:  # is not build it
             kyDebugTk.outMsg('Save file')  # DEBUG:
@@ -172,7 +177,7 @@ def clear() -> None:  # clear
     GUI.upperPloyEntry.clear_entry()
     GUI.lowerPloyEntry.clear_entry()
 
-    set_haveRunBodePloter(False)
+    set_haveRunBodePlotter(False)
 
 
 def display_png(FuncPath: str, BodePath: str) -> None:
@@ -182,7 +187,7 @@ def display_png(FuncPath: str, BodePath: str) -> None:
     GUI.answerFuncOutputImageLabel.configure(image=funcPhotoConverted)
     GUI.answerFuncOutputImageLabel.image = funcPhotoConverted
 
-    # bodeplot display
+    # bode plot display
     bodePhoto = Image.open(BodePath)
     bodePhotoConverted = ImageTk.PhotoImage(bodePhoto)
     GUI.bodePlotFuncOutputImageLabel.configure(image=bodePhotoConverted)
@@ -191,8 +196,8 @@ def display_png(FuncPath: str, BodePath: str) -> None:
     kyDebugTk.outMsg('display photo')  # DEBUG:  # success
 
 
-def run_bode_ploter() -> None:
-    set_haveRunBodePloter(False)
+def run_bode_plotter() -> None:
+    set_haveRunBodePlotter(False)
     if GUI.upperPloyEntry.get_enter_input() == "" or GUI.lowerPloyEntry.get_enter_input() == "":
         outputString = 'No '
 
@@ -292,37 +297,41 @@ def run_bode_ploter() -> None:
         global mag, phase, omega
         mag, phase, omega = bode(transFuncG)
 
-        global bodePolterFilePath
-        bodePolterFilePath = os.path.join(folderPath, 'bode.png')
-        savefig(bodePolterFilePath, dpi=window_dpi)
+        global bodePlotterFilePath
+        bodePlotterFilePath = os.path.join(folderPath, 'bode.png')
+        savefig(bodePlotterFilePath, dpi=window_dpi)
         close()
 
-        set_haveRunBodePloter(True)
+        set_haveRunBodePlotter(True)
         # display function
         display_png(FuncPath=funcFilePath,
-                    BodePath=bodePolterFilePath)
+                    BodePath=bodePlotterFilePath)
 
 
-def clear_buffer() -> None:  # clear tmp
+def clear_buffer() -> None:
+    """_summary_
+        clear tmp
+    """
     kyDebugTk.outMsg('clear tmp')
 
+    if os.path.exists(folderPath) == False:
+        kyDebugTk.outMsg('not build folder')  # DEBUG:
+
     try:
-        os.remove(funcFilePath)
-        kyDebugTk.outMsg('remove func')  # DEBUG:
+        if os.path.exists(funcFilePath):
+            os.remove(funcFilePath)
+            kyDebugTk.outMsg('remove func')  # DEBUG:
 
     except NameError:
         kyDebugTk.outMsg('not build func')  # DEBUG:
 
     try:
-        os.remove(bodePolterFilePath)
-        kyDebugTk.outMsg('remove bode')  # DEBUG:
+        if os.path.exists(bodePlotterFilePath):
+            os.remove(bodePlotterFilePath)
+            kyDebugTk.outMsg('remove bode')  # DEBUG:
 
     except NameError:
         kyDebugTk.outMsg('not build bode')  # DEBUG:
 
-    try:
-        os.rmdir(folderPath)
-        kyDebugTk.outMsg('remove bode')  # DEBUG:
-
-    except NameError:
-        kyDebugTk.outMsg('not build folder')  # DEBUG:
+    os.rmdir(folderPath)
+    kyDebugTk.outMsg('remove bode')  # DEBUG:

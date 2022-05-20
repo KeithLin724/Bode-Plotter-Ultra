@@ -27,7 +27,7 @@ def init(window: Window) -> None:
     runBodePloterButton = Button(inputLabelFrame,
                                  text='run',
                                  bootstyle="success",
-                                 command=run_bode_ploter,
+                                 command=run_bode_plotter,
                                  width=8).pack()
     inputLabelFrame.pack()
 

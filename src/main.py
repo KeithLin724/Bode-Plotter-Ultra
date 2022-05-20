@@ -1,7 +1,7 @@
 '''
-Title:Bode ploter ultra 
+Title:Bode plotter ultra 
 written By KYLiN
-This is Bode ploter ultra , This is a code of build the bode plot , It is a upgrade version of "bode ploter".
+This is Bode plotter ultra , This is a code of build the bode plot , It is a upgrade version of "bode ploter".
 Date: 05/09/22
 '''
 import GUI
