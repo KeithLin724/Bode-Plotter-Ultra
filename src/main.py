@@ -16,7 +16,7 @@ def main() -> None:
     window.iconbitmap(default='icon\icon_92E_icon.ico')
     window.iconbitmap('icon\icon_92E_icon.ico')
 
-    window.title('Bode Ploter Ultra(design By KYLiN)')
+    window.title('Bode Plotter Ultra(design By KYLiN)')
 
     GUI.init(window=window)
     window.mainloop()
