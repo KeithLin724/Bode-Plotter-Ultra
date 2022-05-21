@@ -23,12 +23,12 @@ def init(window: Window) -> None:
     global lowerPloyEntry
     lowerPloyEntry = kyEntry(frame=inputLabelFrame, entryName='輸入分母多項式 : ')
 
-    global runBodePloterButton
-    runBodePloterButton = Button(inputLabelFrame,
-                                 text='run',
-                                 bootstyle="success",
-                                 command=run_bode_plotter,
-                                 width=8).pack()
+    global runBodePlotterButton
+    runBodePlotterButton = Button(inputLabelFrame,
+                                  text='run',
+                                  bootstyle="success",
+                                  command=run_bode_plotter,
+                                  width=8).pack()
     inputLabelFrame.pack()
 
     funcLabel = LabelFrame(userFrame,
@@ -43,7 +43,7 @@ def init(window: Window) -> None:
 
     userFrame.pack(side=LEFT)
 
-    # output bodeplot
+    # output bode plot
     outputFrame = Frame(window)
 
     bodeLabel = LabelFrame(outputFrame,
