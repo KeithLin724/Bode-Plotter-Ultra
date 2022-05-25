@@ -36,6 +36,12 @@ def set_saveClick(TF: bool) -> None:
 
 
 def set_haveRunBodePlotter(TF: bool) -> None:
+    """_summary_
+        setting some the var of RunBodePlotter
+    Args:
+        TF (bool): about the the true false value
+    """
+
     global haveRunBodePlotter
     haveRunBodePlotter = TF
 
